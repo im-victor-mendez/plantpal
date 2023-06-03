@@ -1,8 +1,13 @@
 {
   "name": "plantpal",
+  "description": "Plant manager :P",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Victor Mendez",
+    "url": "https://www.linkedin.com/in/im-victor-mendez/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
