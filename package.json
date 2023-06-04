@@ -2,7 +2,7 @@
   "name": "plantpal",
   "description": "PlantPal is a comprehensive plant management application that helps you care for your plants with ease. Keep track of your plant collection, receive watering reminders, access a plant library, and get personalized care tips. Join a vibrant community of plant lovers and take your gardening skills to the next level.",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,9 @@
   "dependencies": {
     "jsdom": "^22.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.62.1",
+    "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
