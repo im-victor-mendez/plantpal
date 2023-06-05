@@ -9,4 +9,6 @@ body {
     background-color: $background;
     color: $text;
     font-family: $font-family;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
 }

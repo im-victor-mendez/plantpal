@@ -1,0 +1,39 @@
+@import '../../sass/colors';
+
+$padding: 0px 8px;
+$border-radius: 30px;
+$active-size: 90px;
+$icon-size: 48px;
+
+#nav-bar {
+    background-color: $bg-200;
+    display: flex;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+    padding: $padding;
+
+    a {
+        display: grid;
+        place-items: center;
+        width: $active-size;
+        height: $active-size;
+    }
+
+    .active {
+        background-color: $primary-300;
+        border-radius: $border-radius;
+
+        svg * {
+            color: $accent;
+        }
+    }
+
+    svg {
+        width: $icon-size;
+        height: $icon-size;
+
+        * {
+            color: $text;
+        }
+    }
+}
