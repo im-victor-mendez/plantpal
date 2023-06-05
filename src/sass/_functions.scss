@@ -1,0 +1,3 @@
+@function remove-padding($size, $padding) {
+    @return $size - ($padding * 2)
+}

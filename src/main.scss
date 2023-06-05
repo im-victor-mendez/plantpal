@@ -1,0 +1,12 @@
+@import './sass/colors';
+@import './sass/fonts';
+
+body {
+    margin: 0;
+}
+
+#root {
+    background-color: $background;
+    color: $text;
+    font-family: $font-family;
+}

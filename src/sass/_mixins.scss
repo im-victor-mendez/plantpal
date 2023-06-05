@@ -1,0 +1,13 @@
+@import './colors';
+
+@mixin icon($size: 24px) {
+    svg {
+        fill: $text;
+        width: $size;
+        height: $size;
+    }
+}
+
+@mixin icon-medium {
+    @include icon(48px);
+}
