@@ -1,6 +1,6 @@
 import './Account.scss'
 import { useSelector } from "react-redux"
-import { BackWithSettings } from "../../components/Top/Top"
+import { Settings } from "../../components/Top/Top"
 import { RootState } from "../../store/store"
 import { ReactComponent as AccountIcon } from '../../assets/svg/user.svg'
 
@@ -11,7 +11,7 @@ function Account() {
 
     return (
         <main id="account" className='page'>
-            <BackWithSettings/>
+            <Settings/>
             <article id="account-info">
                 {image ?
                     <img

@@ -9,7 +9,8 @@ const className = 'top'
 export enum TopTypes {
     DEFAULT = className,
     BACK = `${className} back`,
-    BACK_WITH_SETTINGS = `${className} back-settings`
+    BACK_WITH_SETTINGS = `${className} back-settings`,
+    SETTINGS = `${className} top-settings`
 }
 
 interface TopProps {
@@ -58,6 +59,23 @@ export function BackWithSettings(): React.JSX.Element {
                 onClick={settings}
             />
         </Back>
+    )
+}
+
+export function Settings() {
+    const navigate = useNavigate()
+
+    function settings() {
+        navigate('/settings')
+    }
+
+    return (
+        <Top type={TopTypes.SETTINGS} >
+            <SettingsIcon
+            className='settings'
+                onClick={settings}
+            />
+        </Top>
     )
 }
 

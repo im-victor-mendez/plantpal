@@ -8,8 +8,10 @@
     @include icon-medium();
 }
 
-.top.back-settings {
-    .settings {
-        fill: none;
-    }
+.top > .settings {
+    fill: none;
+}
+
+.top.top-settings {
+    justify-content: flex-end;
 }

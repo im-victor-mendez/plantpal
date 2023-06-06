@@ -18,6 +18,7 @@ function App() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       dispatch(setLoading(true))
       if (user) dispatch(getUserById(user.uid))
+      dispatch(setLoading(false))
     })
 
     return () => {

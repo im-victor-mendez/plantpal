@@ -1,10 +1,15 @@
 import { ThunkAction } from 'redux-thunk'
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import {
+    createUserWithEmailAndPassword,
+    signInWithPopup,
+    signOut
+} from 'firebase/auth'
 import {
     AuthAction,
     SET_ERROR,
     SET_LOADING,
     SET_USER,
+    SIGN_OUT,
     SignUpData,
     User
 } from "../types"
@@ -93,9 +98,9 @@ ThunkAction<void, RootState, null, AuthAction> {
             }
         } catch (error: any) {
             dispatch({ type: SET_ERROR, payload: error.message })
+        } finally {
+            dispatch(setLoading(false))
         }
-
-        dispatch(setLoading(false))
     }
 }
 
@@ -106,5 +111,18 @@ ThunkAction<void, RootState, null, AuthAction> {
             type: SET_LOADING,
             payload: value
         })
+    }
+}
+
+export function logOut(): ThunkAction<void, RootState, null, AuthAction> {
+    return async dispatch => {
+        try {
+            dispatch(setLoading(true))
+            await signOut(auth)
+            dispatch({ type: SIGN_OUT })
+        } catch (error: any) {
+            dispatch({ type: SET_ERROR, payload: error.message })
+        }
+        dispatch(setLoading(false))
     }
 }
