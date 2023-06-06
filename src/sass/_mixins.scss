@@ -17,6 +17,7 @@ $default-font-size: 22px;
 @mixin font($font-size: $default-font-size) {
     color: $text;
     font-size: $font-size;
+    margin: 0;
 }
 
 @mixin font-regular($font-size: $default-font-size) {

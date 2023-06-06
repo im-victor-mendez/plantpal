@@ -1,0 +1,34 @@
+@import '../../sass/mixins';
+
+$gap: 13px;
+$icon-size: 192px;
+$stroke-width: 1;
+$font-size: 42px;
+
+.plantpal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap;
+    width: fit-content;
+
+    svg {
+        width: $icon-size;
+        height: $icon-size;
+        stroke-width: $stroke-width;
+    }
+
+    .title {
+        margin: 0;
+    }
+}
+
+.plantpal.horizontal {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+
+    .title {
+        @include font-semi-bold($font-size);
+    }
+}
