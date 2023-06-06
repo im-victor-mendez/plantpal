@@ -11,3 +11,20 @@
 @mixin icon-medium {
     @include icon(48px);
 }
+
+$default-font-size: 22px;
+
+@mixin font($font-size: $default-font-size) {
+    color: $text;
+    font-size: $font-size;
+}
+
+@mixin font-regular($font-size: $default-font-size) {
+    @include font($font-size);
+    font-weight: 400;
+}
+
+@mixin font-semi-bold($font-size: $default-font-size) {
+    @include font($font-size);
+    font-weight: 600;
+}
