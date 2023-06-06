@@ -30,7 +30,7 @@ $max-height: 67px;
 }
 
 .input.input-element {
-    width: remove-padding($max-width, $padding);
+    width: -webkit-fill-available;
 }
 
 .toggle {

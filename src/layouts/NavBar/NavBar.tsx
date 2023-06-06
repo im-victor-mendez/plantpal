@@ -1,6 +1,6 @@
 import './NavBar.scss'
 import { NavLink } from 'react-router-dom'
-import Pages from "../../pages/Pages"
+import { NavBarPages } from "../../pages/Pages"
 
 /**
  * Nav Bar
@@ -8,7 +8,7 @@ import Pages from "../../pages/Pages"
  * @returns {React.JSX.Element}
  */
 function NavBar(): React.JSX.Element {
-  const MappedPages = Pages.map(Page =>
+  const MappedPages = NavBarPages.map(Page =>
     <NavLink to={Page.path}>
         <Page.icon/>
     </NavLink>
