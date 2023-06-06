@@ -1,8 +1,8 @@
 import { ThunkAction } from 'redux-thunk'
-import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
-import { AuthAction, NEED_VERIFICATION, SET_ERROR, SET_USER, SignUpData, User } from "../types"
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup } from 'firebase/auth'
+import { AuthAction, NEED_VERIFICATION, SET_ERROR, SET_USER, SET_USER_PROVIDER, SignUpData, User } from "../types"
 import { RootState } from '../store'
-import { auth, firestore } from '../../firebase'
+import { auth, firestore, googleAuthProvider } from '../../firebase'
 import { collection, doc, serverTimestamp, setDoc } from 'firebase/firestore'
 
 // Create user
@@ -29,6 +29,21 @@ export function createUserWithEmail(data: SignUpData, onError: () => void): Thun
         } catch (error) {
             console.log(error)
             onError()
+            dispatch({ type: SET_ERROR, payload: error.message })
+        }
+    }
+}
+
+export function loginWithProvider(): ThunkAction<void, RootState, null, AuthAction> {
+    return async dispatch => {
+        try {
+            const response = await signInWithPopup(auth, googleAuthProvider)
+
+            if (response.user) {
+                dispatch({ type: SET_USER_PROVIDER, payload: response.user })
+            }
+        } catch (error) {
+            console.log(error)
             dispatch({ type: SET_ERROR, payload: error.message })
         }
     }

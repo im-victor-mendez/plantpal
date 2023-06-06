@@ -1,4 +1,7 @@
+import { User as UserFirebase } from 'firebase/auth'
+
 export const SET_USER = 'SET_USER'
+export const SET_USER_PROVIDER = 'SET_USER_PROVIDER'
 export const SIGN_OUT = 'SIGN_OUT'
 export const SET_LOADING = 'SET_LOADING'
 export const SET_ERROR = 'SET_ERROR'
@@ -38,6 +41,11 @@ interface SetUserAction {
     payload: User
 }
 
+interface SetUserProvider {
+    type: typeof SET_USER_PROVIDER
+    payload: UserFirebase
+}
+
 interface SetLoadingAction {
     type: typeof SET_LOADING
     payload: boolean
@@ -61,4 +69,7 @@ interface SetSuccessAction {
     payload: string
 }
 
-export type AuthAction = SetUserAction | SetLoadingAction | SignOutAction | SetErrorAction | NeedVerificationAction | SetSuccessAction
+export type AuthAction = SetUserAction | SetLoadingAction |
+SignOutAction | SetErrorAction |
+NeedVerificationAction | SetSuccessAction |
+SetUserProvider

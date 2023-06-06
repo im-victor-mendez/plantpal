@@ -3,9 +3,8 @@ import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import Input from "../../components/Input/Input"
 import Button from "../../components/Button/Button"
-import { createUserWithEmail } from "../../store/actions/authActions"
+import { createUserWithEmail, loginWithProvider } from "../../store/actions/authActions"
 import PlantPal, { Types } from "../../components/PlantPal/PlantPal"
-import { ReactComponent as AppleIcon } from '../../assets/svg/apple.svg'
 import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg'
 
 function CreateAccount() {
@@ -17,6 +16,10 @@ function CreateAccount() {
 
     function createAccount() {
         dispatch(createUserWithEmail({ email, firstName, password }, () => console.log('Error')))
+    }
+
+    function alternativeMethod() {
+        dispatch(loginWithProvider())
     }
 
     return (
@@ -34,8 +37,7 @@ function CreateAccount() {
                 <div className='top'>
                     <p className='account'>Already have account?</p>
                     <div className='methods'>
-                        <AppleIcon/>
-                        <GoogleIcon/>
+                        <GoogleIcon onClick={alternativeMethod}/>
                     </div>
                 </div>
                 <p className='forgot-password'>Forgot password?</p>
