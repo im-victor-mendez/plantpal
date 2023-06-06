@@ -10,6 +10,7 @@ export interface User {
     email: string
     id: string
     createdAt: any
+    image: string | null
 }
 
 export interface AuthState {

@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 import './Pages.scss'
 import { ReactComponent as HomeIcon } from '../assets/svg/home.svg'
 import { ReactComponent as CalendarIcon } from '../assets/svg/calendar.svg'
 import { ReactComponent as LeafIcon } from '../assets/svg/nature-ecology-leaf-environment-leaf-ecology-plant-plants-eco.svg'
 import { ReactComponent as AccountIcon } from '../assets/svg/user.svg'
 import CreateAccount from "./Authentication/CreateAccount"
+import Account from './Account/Account'
 
 interface Page {
     element: React.ReactNode
@@ -28,7 +30,7 @@ const Pages: Array<Page> = [
         path: '/plants'
     },
     {
-        element: <>To add Account Page</>,
+        element: <Account/>,
         name: 'account',
         path: '/account'
     },

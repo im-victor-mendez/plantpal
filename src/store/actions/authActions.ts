@@ -1,7 +1,12 @@
 import { ThunkAction } from 'redux-thunk'
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import {
-    AuthAction, SET_ERROR, SET_LOADING, SET_USER, SignUpData, User
+    AuthAction,
+    SET_ERROR,
+    SET_LOADING,
+    SET_USER,
+    SignUpData,
+    User
 } from "../types"
 import { RootState } from '../store'
 import { auth, firestore, googleAuthProvider } from '../../firebase'
@@ -22,7 +27,8 @@ ThunkAction<void, RootState, null, AuthAction> {
                     createdAt: serverTimestamp(),
                     email: data.email,
                     firstName: data.firstName,
-                    id: response.user.uid
+                    id: response.user.uid,
+                    image: null
                 }
                 const collectionReference = collection(firestore, '/users')
                 const documentReference = doc(
@@ -33,7 +39,6 @@ ThunkAction<void, RootState, null, AuthAction> {
 
             }
         } catch (error: any) {
-            console.log(error)
             onError()
             dispatch({ type: SET_ERROR, payload: error.message })
         }
@@ -51,7 +56,8 @@ ThunkAction<void, RootState, null, AuthAction> {
                     createdAt: response.user.metadata.creationTime,
                     email: response.user.email || '',
                     firstName: response.user.displayName || '',
-                    id: response.user.uid
+                    id: response.user.uid,
+                    image: response.user.photoURL
                 }
                 
                 const collectionReference = collection(firestore, '/users')
@@ -64,7 +70,6 @@ ThunkAction<void, RootState, null, AuthAction> {
                 dispatch({ type: SET_USER, payload: userData })
             }
         } catch (error: any) {
-            console.log(error)
             dispatch({ type: SET_ERROR, payload: error.message })
         }
     }
@@ -80,13 +85,14 @@ ThunkAction<void, RootState, null, AuthAction> {
 
             if (user.exists()) {
                 const userData = user.data() as User
+
                 dispatch({
                     type: SET_USER,
                     payload: userData
                 })
             }
-        } catch (error) {
-            console.log(error)
+        } catch (error: any) {
+            dispatch({ type: SET_ERROR, payload: error.message })
         }
 
         dispatch(setLoading(false))

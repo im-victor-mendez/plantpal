@@ -1,4 +1,13 @@
-import { AuthAction, AuthState, NEED_VERIFICATION, SET_ERROR, SET_LOADING, SET_SUCCESS, SET_USER, SIGN_OUT } from "../types"
+import {
+    AuthAction,
+    AuthState,
+    NEED_VERIFICATION,
+    SET_ERROR,
+    SET_LOADING,
+    SET_SUCCESS,
+    SET_USER,
+    SIGN_OUT
+} from "../types"
 
 const initialState: AuthState = {
     authenticated: false,
