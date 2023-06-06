@@ -1,4 +1,4 @@
-import { AuthAction, AuthState, NEED_VERIFICATION, SET_ERROR, SET_LOADING, SET_SUCCESS, SET_USER, SET_USER_PROVIDER, SIGN_OUT } from "../types"
+import { AuthAction, AuthState, NEED_VERIFICATION, SET_ERROR, SET_LOADING, SET_SUCCESS, SET_USER, SIGN_OUT } from "../types"
 
 const initialState: AuthState = {
     authenticated: false,
@@ -43,12 +43,6 @@ function authReducer(state = initialState, action:AuthAction) {
             return {
                 ...state,
                 success: action.payload
-            }
-        case SET_USER_PROVIDER:
-            return {
-                ...state,
-                user: action.payload,
-                authenticated: true
             }
         default:
             return state

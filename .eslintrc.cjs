@@ -10,6 +10,11 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
-    'semi': ['error', 'never']
+    'semi': ['error', 'never'],
+    'max-len': ['error',
+      { 'code': 80 },
+      { 'ignoreTemplateLiterals': true },
+      { 'ignoreRegExpLiterals': true }
+    ]
   }
 }
