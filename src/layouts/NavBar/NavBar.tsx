@@ -1,20 +1,26 @@
 import './NavBar.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { NavBarPages } from "../../pages/Pages"
+
+const pagesToHide = ['/create-account']
 
 /**
  * Nav Bar
  * @description Bottom Nav Bar to use to navigate between pages.
  * @returns {React.JSX.Element}
  */
-function NavBar(): React.JSX.Element {
+function NavBar(): React.JSX.Element | void {
+  const location = useLocation()
+
+  const isPageToHide = pagesToHide.includes(location.pathname)
+  
   const MappedPages = NavBarPages.map(Page =>
     <NavLink to={Page.path}>
         <Page.icon/>
     </NavLink>
   )
   
-  return (
+  if (!isPageToHide) return (
     <nav id="nav-bar">
         {MappedPages}
     </nav>

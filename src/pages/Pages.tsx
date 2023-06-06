@@ -1,3 +1,4 @@
+import './Pages.scss'
 import { ReactComponent as HomeIcon } from '../assets/svg/home.svg'
 import CreateAccount from "./Authentication/CreateAccount"
 
