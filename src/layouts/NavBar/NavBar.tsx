@@ -15,7 +15,7 @@ function NavBar(): React.JSX.Element | void {
   const isPageToHide = pagesToHide.includes(location.pathname)
   
   const MappedPages = NavBarPages.map(Page =>
-    <NavLink to={Page.path}>
+    <NavLink key={Page.name} to={Page.path}>
         <Page.icon/>
     </NavLink>
   )

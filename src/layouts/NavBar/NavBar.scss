@@ -19,14 +19,35 @@ $icon-size: 48px;
         place-items: center;
         width: $active-size;
         height: $active-size;
+
+        svg * {
+            stroke: $text;
+        }
+
+        .home *, .leaf * {
+            fill: none;
+            stroke: $text;
+        }
+
+        svg > path {
+            fill: $text;
+        }
     }
 
     .active {
         background-color: $primary-300;
         border-radius: $border-radius;
 
-        svg * {
-            color: $accent;
+        svg, svg * {
+            stroke: $accent;
+        }
+
+        svg > path {
+            fill: $accent;
+        }
+
+        .home *, .leaf * {
+            fill: none;
         }
     }
 
