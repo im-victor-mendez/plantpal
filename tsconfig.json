@@ -21,7 +21,20 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Vitest */
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+
+    /* Path aliases */
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@firebase/*": ["./src/firebase/*"],
+      "@functions/*": ["./src/functions/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@sass/*": ["./src/sass/*"],
+      "@store/*": ["./src/store/*"]
+    }
   },
   "include": ["src", "svgr.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
