@@ -13,7 +13,7 @@ function Account() {
 
 	return (
 		<main id="account" className="page">
-			<Settings />
+			{user && <Settings />}
 			{user ? <AccountInfo image={image} name={name} /> : <NoAccount />}
 		</main>
 	)
@@ -27,14 +27,16 @@ interface AccountInfo {
 function AccountInfo({ image, name }: AccountInfo) {
 	return (
 		<article id="account-info" data-testid="account-info">
-			<img
-				id="account-image"
-				src={`${image}`}
-				alt={`${name} account image`}
-				referrerPolicy="no-referrer"
-			/>
+			<div className="account-top">
+				<img
+					id="account-image"
+					src={`${image}`}
+					alt={`${name} account image`}
+					referrerPolicy="no-referrer"
+				/>
 
-			<h1 id="account-name">{name}</h1>
+				<h1 id="account-name">{name}</h1>
+			</div>
 		</article>
 	)
 }
