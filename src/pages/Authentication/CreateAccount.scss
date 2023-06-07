@@ -1,44 +1,50 @@
 @import '../../sass/mixins';
+@import '../../sass/functions';
 
-$padding: 20px;
-$vertical-margin: 40px;
+$vertical-padding: 40px;
+$padding: $vertical-padding 20px;
 
 #create-account {
-    padding: $padding;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: $padding;
+	height: calc(100% - $vertical-padding * 2);
 
-    .plantpal {
-        margin-top: $vertical-margin
-    }
+	.inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
 
-    .inputs {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+	.alternative-methods {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 46px;
 
-    .alternative-methods {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 46px;
-        margin-bottom: $vertical-margin;
+		.top {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: -webkit-fill-available;
+			@include font-regular();
 
-        .top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: -webkit-fill-available;
-            @include font-regular();
-            
-            .methods {
-                display: flex;
-                gap: 30px;
-                @include icon-medium();
-            }
-        }
+			.methods {
+				display: flex;
+				gap: 30px;
+				@include icon-medium();
+			}
+		}
 
-        .forgot-password {
-            @include font-regular();
-        }
-    }
+		.accent {
+			color: $accent;
+		}
+
+		.account,
+		.forgot-password {
+			@include font-regular();
+			text-decoration: none;
+		}
+	}
 }
