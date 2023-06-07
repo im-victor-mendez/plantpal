@@ -1,41 +1,41 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+	"compilerOptions": {
+		"target": "ES2020",
+		"useDefineForClassFields": true,
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+		/* Linting */
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
 
-    /* Vitest */
-    "types": ["vitest/globals"],
+		/* Vitest */
+		"types": ["vitest/globals"],
 
-    /* Path aliases */
-    "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@firebase/*": ["./src/firebase/*"],
-      "@functions/*": ["./src/functions/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@sass/*": ["./src/sass/*"],
-      "@store/*": ["./src/store/*"]
-    }
-  },
-  "include": ["src", "svgr.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+		/* Path aliases */
+		"paths": {
+			"@assets/*": ["./src/assets/*"],
+			"@components/*": ["./src/components/*"],
+			"@Firebase/*": ["./src/Firebase/*"],
+			"@functions/*": ["./src/functions/*"],
+			"@hooks/*": ["./src/hooks/*"],
+			"@layouts/*": ["./src/layouts/*"],
+			"@pages/*": ["./src/pages/*"],
+			"@sass/*": ["./src/sass/*"],
+			"@store/*": ["./src/store/*"]
+		}
+	},
+	"include": ["src", "svgr.d.ts"],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }

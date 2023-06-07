@@ -5,29 +5,29 @@ $no-image-size: 200px;
 $border-radius: 100px;
 
 #account {
-    padding: $padding;
+	padding: $padding;
 
-    #account-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: -webkit-fill-available;
+	#account-info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: -webkit-fill-available;
 
-        .no-image {
-            background-color: $bg-300;
-            display: grid;
-            place-items: center;
-            
-            .icon {
-                width: 96px;
-            }
-        }
+		.no-image {
+			background-color: $bg-300;
+			display: grid;
+			place-items: center;
 
-        .no-image,
-        #account-image {
-            border-radius: $border-radius;
-            width: $no-image-size;
-            height: $no-image-size;
-        }
-    }
+			.icon {
+				width: 96px;
+			}
+		}
+
+		.no-image,
+		#account-image {
+			border-radius: $border-radius;
+			width: $no-image-size;
+			height: $no-image-size;
+		}
+	}
 }
