@@ -1,19 +1,22 @@
 import './CreateAccount.scss'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import Input from '../../components/Input/Input'
-import Button from '../../components/Button/Button'
+import Input from '@components/Input/Input'
+import Button from '@components/Button/Button'
 import {
 	createUserWithEmail,
 	loginWithProvider,
-} from '../../store/actions/authActions'
-import PlantPal, {
-	Types as PlantPalTypes,
-} from '../../components/PlantPal/PlantPal'
-import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg'
+} from '@store/actions/authActions'
+import PlantPal, { Types as PlantPalTypes } from '@components/PlantPal/PlantPal'
+import { ReactComponent as GoogleIcon } from '@assets/svg/google.svg'
 import { NavLink } from 'react-router-dom'
 
-function CreateAccount() {
+/**
+ * Create Account
+ * @description Page to create accounts
+ * @returns {React.JSX.Element}
+ */
+function CreateAccount(): React.JSX.Element {
 	const [name, setName] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
@@ -50,7 +53,7 @@ function CreateAccount() {
 						to={'/login'}
 						data-testid="already-have-account"
 					>
-						Already have account?
+						Already <span className="accent">have account</span>?
 					</NavLink>
 					<div className="methods">
 						{/* eslint-disable-next-line max-len */}
