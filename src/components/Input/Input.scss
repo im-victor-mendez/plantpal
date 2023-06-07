@@ -10,70 +10,70 @@ $max-width: 390px;
 $max-height: 67px;
 
 .input {
-    background-color: $bg-200;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
-    border: 0;
-    border-radius: $border-radius;
-    padding: $padding;
-    width: -webkit-fill-available;
-    max-width: $max-width;
-    max-height: $max-height;
+	background-color: $bg-200;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 27px;
+	border: 0;
+	border-radius: $border-radius;
+	padding: $padding;
+	width: -webkit-fill-available;
+	max-width: $max-width;
+	max-height: $max-height;
 
-    &:focus,
-    &:focus-visible {
-        background-color: $bg-300;
-        color: $text-200;
-        outline: 0;
-    }
+	&:focus,
+	&:focus-visible {
+		background-color: $bg-300;
+		color: $text-200;
+		outline: 0;
+	}
 }
 
 .input.input-element {
-    width: -webkit-fill-available;
+	width: -webkit-fill-available;
 }
 
 .toggle {
-    background-color: transparent;
-    border-radius: 0;
-    padding: 0;
-    max-height: none;
+	background-color: transparent;
+	border-radius: 0;
+	padding: 0;
+	max-height: none;
 
-    .top {
-        background-color: $bg-200;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: $border-radius;
-        padding: 10px $padding 9px;
-        @include icon-medium();
+	.top {
+		background-color: $bg-200;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-radius: $border-radius;
+		padding: 10px $padding 9px;
+		@include icon-medium();
 
-        .name {
-            margin: 0;
-        }
-    }
+		.name {
+			margin: 0;
+		}
+	}
 }
 
 .toggle.active {
-    .top {
-        background-color: $bg-300;
-        border-radius: $border-radius-active-top;
-    }
+	.top {
+		background-color: $bg-300;
+		border-radius: $border-radius-active-top;
+	}
 
-    .value {
-        background-color: $bg-200;
-        text-align: center;
-        margin: 0;
-        border-top: 1px solid $text;
-        padding: $padding;
+	.value {
+		background-color: $bg-200;
+		text-align: center;
+		margin: 0;
+		border-top: 1px solid $text;
+		padding: $padding;
 
-        &:hover,
-        &.active {
-            background-color: $primary-200;
-        }
+		&:hover,
+		&.active {
+			background-color: $primary-200;
+		}
 
-        &:last-child {
-            border-radius: $border-radius-active-bottom;
-        }
-    }
+		&:last-child {
+			border-radius: $border-radius-active-bottom;
+		}
+	}
 }

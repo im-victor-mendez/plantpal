@@ -1,8 +1,8 @@
 import './Button.scss'
 
 interface ButtonProps {
-    display: string
-    functionality: () => void
+	display: string
+	functionality: () => void
 }
 
 /**
@@ -15,18 +15,18 @@ interface ButtonProps {
  * functionality={createAccount}/>
  */
 function Button({ display, functionality }: ButtonProps): React.JSX.Element {
-    /**
-     * On click
-     * @description Function to dispatch/execute custom function
-     */
-    function onClick() {
-        functionality()
-    }
+	/**
+	 * On click
+	 * @description Function to dispatch/execute custom function
+	 */
+	function onClick() {
+		functionality()
+	}
 
-    return (
-        <button className="button" onClick={onClick}>
-            {display}
-        </button>
-    )
+	return (
+		<button className="button" onClick={onClick}>
+			{display}
+		</button>
+	)
 }
 export default Button

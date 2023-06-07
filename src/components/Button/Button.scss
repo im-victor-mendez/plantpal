@@ -6,16 +6,16 @@ $height: 67px;
 $border-radius: 40px;
 
 .button {
-    background-color: $primary;
-    height: $height;
-    width: -webkit-fill-available;
-    max-width: $max-width;
-    border: 0;
-    border-radius: $border-radius;
-    @include font-regular();
+	background-color: $primary;
+	height: $height;
+	width: -webkit-fill-available;
+	max-width: $max-width;
+	border: 0;
+	border-radius: $border-radius;
+	@include font-regular();
 
-    &:hover {
-        background-color: $primary-300;
-        color: $primary-200;
-    }
+	&:hover {
+		background-color: $primary-300;
+		color: $primary-200;
+	}
 }

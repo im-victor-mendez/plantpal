@@ -4,16 +4,22 @@ import { ReactComponent as PlantIcon } from '../../assets/svg/plant.svg'
 const className = 'plantpal'
 
 export enum Types {
-  DEFAULT = className,
-  HORIZONTAL = `${className} horizontal`
+	DEFAULT = className,
+	HORIZONTAL = `${className} horizontal`,
 }
 
-function PlantPal({ type = Types.DEFAULT }) {
-  return (
-    <section className={type}>
-        <PlantIcon/>
-        <h1 className='title'>PlantPal</h1>
-    </section>
-  )
+/**
+ * PlantPal
+ * @description Icon and application name of Plantpal
+ * @param type Type of PlantPal
+ * @returns {React.JSX.Element}
+ */
+function PlantPal({ type = Types.DEFAULT }): React.JSX.Element {
+	return (
+		<section className={type}>
+			<PlantIcon data-testid="icon" />
+			<h1 className="title">PlantPal</h1>
+		</section>
+	)
 }
 export default PlantPal

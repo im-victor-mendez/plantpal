@@ -1,17 +1,17 @@
 @import '../../sass/mixins';
 
 .top {
-    display: flex;
-    justify-content: space-between;
-    width: -webkit-fill-available;
+	display: flex;
+	justify-content: space-between;
+	width: -webkit-fill-available;
 
-    @include icon-medium();
+	@include icon-medium();
 }
 
 .top > .settings {
-    fill: none;
+	fill: none;
 }
 
 .top.top-settings {
-    justify-content: flex-end;
+	justify-content: flex-end;
 }

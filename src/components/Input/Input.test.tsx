@@ -2,30 +2,41 @@ import { screen, render } from '@testing-library/react'
 import Input, { InputToggle as Toggle } from './Input'
 
 describe('Input', () => {
-    describe('Default', () => {
-        test('should display placeholder', () => {
-            const placeholder = 'Placeholder'
+	describe('Default', () => {
+		test('should display placeholder', () => {
+			const placeholder = 'Placeholder'
 
-            render(<Input placeholder={placeholder} setValue={function (): void {
-                throw new Error('Function not implemented.')
-            } }/>)
+			render(
+				<Input
+					placeholder={placeholder}
+					setValue={function (): void {
+						throw new Error('Function not implemented.')
+					}}
+				/>
+			)
 
-            const element = screen.getByPlaceholderText(placeholder)
-            expect(element).toBeDefined()
-        })
-    })
+			const element = screen.getByPlaceholderText(placeholder)
+			expect(element).toBeDefined()
+		})
+	})
 
-    describe('Toggle', () => {
-        test('should display name', () => {
-            const name = 'Toggle Name'
+	describe('Toggle', () => {
+		test('should display name', () => {
+			const name = 'Toggle Name'
 
-            render(<Toggle name={name} values={[]} setValue={function (): void {
-                throw new Error('Function not implemented.')
-            } }/>)
+			render(
+				<Toggle
+					name={name}
+					values={[]}
+					setValue={function (): void {
+						throw new Error('Function not implemented.')
+					}}
+				/>
+			)
 
-            const element = screen.getByText(name)
+			const element = screen.getByText(name)
 
-            expect(element).toBeDefined()
-        })
-    })
+			expect(element).toBeDefined()
+		})
+	})
 })
