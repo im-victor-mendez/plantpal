@@ -11,7 +11,7 @@ $icon-size: 48px;
 	justify-content: space-between;
 	width: -webkit-fill-available;
 	padding: $padding;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 
 	a {
