@@ -16,7 +16,7 @@ export enum Types {
  */
 function PlantPal({ type = Types.DEFAULT }): React.JSX.Element {
 	return (
-		<section className={type}>
+		<section className={type} data-testid="plantpal">
 			<PlantIcon data-testid="icon" />
 			<h1 className="title">PlantPal</h1>
 		</section>
