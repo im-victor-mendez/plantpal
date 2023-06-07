@@ -6,14 +6,19 @@ import { ReactComponent as AccountIcon } from '@assets/svg/user.svg'
 import Button from '@components/Button/Button'
 import { useNavigate } from 'react-router-dom'
 
-function Account() {
+/**
+ * Account
+ * @description Account page
+ * @returns {React.JSX.Element}
+ */
+function Account(): React.JSX.Element {
 	const { user } = useSelector((state: RootState) => state.auth)
 	const name = user?.firstName
 	const image = user?.image
 
 	return (
 		<main id="account" className="page">
-			<Settings />
+			{user && <Settings />}
 			{user ? <AccountInfo image={image} name={name} /> : <NoAccount />}
 		</main>
 	)
@@ -24,22 +29,36 @@ interface AccountInfo {
 	name: string | null | undefined
 }
 
-function AccountInfo({ image, name }: AccountInfo) {
+/**
+ * Account Info
+ * @description To use when user was logged.
+ * @param image Image profile url
+ * @param name User name
+ * @returns {React.JSX.Element}
+ */
+function AccountInfo({ image, name }: AccountInfo): React.JSX.Element {
 	return (
 		<article id="account-info" data-testid="account-info">
-			<img
-				id="account-image"
-				src={`${image}`}
-				alt={`${name} account image`}
-				referrerPolicy="no-referrer"
-			/>
+			<div className="account-top">
+				<img
+					id="account-image"
+					src={`${image}`}
+					alt={`${name} account image`}
+					referrerPolicy="no-referrer"
+				/>
 
-			<h1 id="account-name">{name}</h1>
+				<h1 id="account-name">{name}</h1>
+			</div>
 		</article>
 	)
 }
 
-function NoAccount() {
+/**
+ * No Account
+ * @description To use when user isn't logged
+ * @returns {React.JSX.Element}
+ */
+function NoAccount(): React.JSX.Element {
 	const navigate = useNavigate()
 
 	function logIn() {
