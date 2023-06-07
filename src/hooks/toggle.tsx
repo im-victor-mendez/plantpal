@@ -1,16 +1,16 @@
 import { useState } from 'react'
 
 interface ToggleProps {
-    iconTrue: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-    iconFalse: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+	iconTrue: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+	iconFalse: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 }
 
 interface ToggleReturn {
-    toggle: boolean
-    setToggle: React.Dispatch<React.SetStateAction<boolean>>
-    toggleState: () => void
-    Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-  }
+	toggle: boolean
+	setToggle: React.Dispatch<React.SetStateAction<boolean>>
+	toggleState: () => void
+	Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+}
 
 /**
  * Toggle hook
@@ -21,14 +21,14 @@ interface ToggleReturn {
  * @example useToggle({ iconTrue: <ArrowUp/>, iconFalse: <ArrowDown/> })
  */
 function useToggle({ iconTrue, iconFalse }: ToggleProps): ToggleReturn {
-    const [toggle, setToggle] = useState(false)
-    const Icon = toggle ? iconTrue : iconFalse
+	const [toggle, setToggle] = useState(false)
+	const Icon = toggle ? iconTrue : iconFalse
 
-    function toggleState() {
-        setToggle(!toggle)
-    }
-    
-    return { toggle, setToggle, toggleState, Icon }
+	function toggleState() {
+		setToggle(!toggle)
+	}
+
+	return { toggle, setToggle, toggleState, Icon }
 }
 
 export default useToggle

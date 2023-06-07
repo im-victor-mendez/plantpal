@@ -6,57 +6,60 @@ $active-size: 90px;
 $icon-size: 48px;
 
 #nav-bar {
-    background-color: $bg-200;
-    display: flex;
-    justify-content: space-between;
-    width: -webkit-fill-available;
-    padding: $padding;
-    position: absolute;
-    bottom: 0;
+	background-color: $bg-200;
+	display: flex;
+	justify-content: space-between;
+	width: -webkit-fill-available;
+	padding: $padding;
+	position: absolute;
+	bottom: 0;
 
-    a {
-        display: grid;
-        place-items: center;
-        width: $active-size;
-        height: $active-size;
+	a {
+		display: grid;
+		place-items: center;
+		width: $active-size;
+		height: $active-size;
 
-        svg * {
-            stroke: $text;
-        }
+		svg * {
+			stroke: $text;
+		}
 
-        .home *, .leaf * {
-            fill: none;
-            stroke: $text;
-        }
+		.home *,
+		.leaf * {
+			fill: none;
+			stroke: $text;
+		}
 
-        svg > path {
-            fill: $text;
-        }
-    }
+		svg > path {
+			fill: $text;
+		}
+	}
 
-    .active {
-        background-color: $primary-300;
-        border-radius: $border-radius;
+	.active {
+		background-color: $primary-300;
+		border-radius: $border-radius;
 
-        svg, svg * {
-            stroke: $accent;
-        }
+		svg,
+		svg * {
+			stroke: $accent;
+		}
 
-        svg > path {
-            fill: $accent;
-        }
+		svg > path {
+			fill: $accent;
+		}
 
-        .home *, .leaf * {
-            fill: none;
-        }
-    }
+		.home *,
+		.leaf * {
+			fill: none;
+		}
+	}
 
-    svg {
-        width: $icon-size;
-        height: $icon-size;
+	svg {
+		width: $icon-size;
+		height: $icon-size;
 
-        * {
-            color: $text;
-        }
-    }
+		* {
+			color: $text;
+		}
+	}
 }

@@ -1,7 +1,7 @@
 import { render, fireEvent } from '@testing-library/react'
 import Button from './Button'
 
-describe('Button', () => {
+describe('Button Component', () => {
 	test('renders button with display text', () => {
 		const displayText = 'Click me'
 		const { getByText } = render(

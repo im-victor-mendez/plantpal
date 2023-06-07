@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import Top, { Back, BackWithSettings, Settings, TopTypes } from './Top'
 import { BrowserRouter, useNavigate } from 'react-router-dom'
 
-describe('Top', () => {
+describe('Top Components', () => {
 	describe('Default', () => {
 		const className = 'top'
 

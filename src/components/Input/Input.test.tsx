@@ -1,7 +1,7 @@
 import { screen, render } from '@testing-library/react'
 import Input, { InputToggle as Toggle } from './Input'
 
-describe('Input', () => {
+describe('Input Components', () => {
 	describe('Default', () => {
 		test('should display placeholder', () => {
 			const placeholder = 'Placeholder'
