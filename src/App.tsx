@@ -7,9 +7,11 @@ import { auth } from './Firebase'
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from './store/store'
 import { getUserById, setLoading } from './store/actions/authActions'
+import { useLocation } from 'react-router-dom'
 
 function App() {
 	const dispatch = useAppDispatch()
+	const location = useLocation()
 	const { loading } = useSelector((state: RootState) => state.auth)
 
 	useEffect(() => {
@@ -31,7 +33,7 @@ function App() {
 	return (
 		<>
 			<Router />
-			<NavBar />
+			{location.pathname !== '/' && <NavBar />}
 		</>
 	)
 }
