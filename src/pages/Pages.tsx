@@ -7,6 +7,7 @@ import { ReactComponent as AccountIcon } from '../assets/svg/user.svg'
 import CreateAccount from './Authentication/CreateAccount/CreateAccount'
 import Account from './Account/Account'
 import Settings from './Settings/Settings'
+import Login from './Authentication/Login/Login'
 
 interface Page {
 	element: React.ReactNode
@@ -34,6 +35,11 @@ const Pages: Array<Page> = [
 		element: <Account />,
 		name: 'account',
 		path: '/account',
+	},
+	{
+		element: <Login />,
+		name: 'login',
+		path: '/login',
 	},
 	{
 		element: <CreateAccount />,

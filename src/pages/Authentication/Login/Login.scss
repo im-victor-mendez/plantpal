@@ -1,0 +1,48 @@
+@import '@sass/colors';
+@import '@sass/mixins';
+$padding: 20px;
+
+#login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: calc(100% - 40px);
+	padding: $padding;
+
+	.plantpal {
+		margin-top: 93px;
+	}
+
+	.inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		width: -webkit-fill-available;
+	}
+
+	.alternative {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 46px;
+		width: -webkit-fill-available;
+		height: 131px;
+		padding: 0px 25px;
+
+		* {
+			@include font-regular();
+			margin: 0;
+			text-decoration: none;
+		}
+
+		.top {
+			display: flex;
+			align-items: center;
+		}
+
+		.accent {
+			color: $accent;
+		}
+	}
+}

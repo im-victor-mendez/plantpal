@@ -1,6 +1,8 @@
 import { ThunkAction } from 'redux-thunk'
 import {
 	createUserWithEmailAndPassword,
+	setPersistence,
+	signInWithEmailAndPassword,
 	signInWithPopup,
 	signOut,
 } from 'firebase/auth'
@@ -10,6 +12,7 @@ import {
 	SET_LOADING,
 	SET_USER,
 	SIGN_OUT,
+	SignInData,
 	SignUpData,
 	User,
 } from '../types'
@@ -55,6 +58,34 @@ export function createUserWithEmail(
 	}
 }
 
+export function loginWithEmail(
+	data: SignInData
+): ThunkAction<void, RootState, null, AuthAction> {
+	return async (dispatch) => {
+		try {
+			const response = await signInWithEmailAndPassword(
+				auth,
+				data.email,
+				data.password
+			)
+
+			if (response.user) {
+				const userData: User = {
+					createdAt: response.user.metadata.creationTime,
+					email: response.user.email || '',
+					firstName: response.user.displayName || '',
+					id: response.user.uid,
+					image: null,
+				}
+				dispatch({ type: SET_USER, payload: userData })
+			}
+		} catch (error: any) {
+			console.log(error)
+			dispatch({ type: SET_ERROR, payload: error.message })
+		}
+	}
+}
+
 export function loginWithProvider(): ThunkAction<
 	void,
 	RootState,
@@ -75,7 +106,9 @@ export function loginWithProvider(): ThunkAction<
 				}
 
 				const collectionReference = collection(firestore, '/users')
+				// eslint-disable-next-line max-len
 				const documentReference = doc(collectionReference, response.user.uid)
+				// eslint-disable-next-line max-len
 				const existsDocument = (await getDoc(documentReference)).exists()
 				if (!existsDocument) await setDoc(documentReference, userData)
 				dispatch({ type: SET_USER, payload: userData })
@@ -132,5 +165,13 @@ export function logOut(): ThunkAction<void, RootState, null, AuthAction> {
 			dispatch({ type: SET_ERROR, payload: error.message })
 		}
 		dispatch(setLoading(false))
+	}
+}
+
+export function setError(
+	message: string
+): ThunkAction<void, RootState, null, AuthAction> {
+	return (dispatch) => {
+		dispatch({ type: SET_ERROR, payload: message })
 	}
 }
