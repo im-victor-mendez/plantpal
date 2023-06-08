@@ -4,12 +4,12 @@ import Router from './pages/Router'
 import NavBar from './layouts/NavBar/NavBar'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './Firebase'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './store/store'
+import { useSelector } from 'react-redux'
+import { RootState, useAppDispatch } from './store/store'
 import { getUserById, setLoading } from './store/actions/authActions'
 
 function App() {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const { loading } = useSelector((state: RootState) => state.auth)
 
 	useEffect(() => {

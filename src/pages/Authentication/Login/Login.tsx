@@ -4,9 +4,9 @@ import Button from '@components/Button/Button'
 import Input from '@components/Input/Input'
 import PlantPal from '@components/PlantPal/PlantPal'
 import { loginWithEmail, loginWithProvider } from '@store/actions/authActions'
-import { RootState } from '@store/store'
+import { RootState, useAppDispatch } from '@store/store'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 /**
@@ -19,7 +19,7 @@ function Login(): React.JSX.Element {
 	const [password, setPassword] = useState<string>('')
 
 	const { error } = useSelector((state: RootState) => state.auth)
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
 	/**

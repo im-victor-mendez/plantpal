@@ -3,13 +3,13 @@ import Button from '@components/Button/Button'
 import Input from '@components/Input/Input'
 import PlantPal, { Types as PlantPalTypes } from '@components/PlantPal/PlantPal'
 import { sendPasswordResetEmail } from '@store/actions/authActions'
+import { useAppDispatch } from '@store/store'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function ForgotPassword() {
 	const [email, setEmail] = useState<string>('')
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
 	function sendEmail() {
