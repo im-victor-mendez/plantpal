@@ -25,7 +25,7 @@ function CreateAccount(): React.JSX.Element {
 	const dispatch = useAppDispatch()
 
 	function createAccount() {
-		dispatch(createUserWithEmail({ email, firstName: name, password }))
+		dispatch(createUserWithEmail({ email, name, password }))
 	}
 
 	function alternativeMethod() {

@@ -1,3 +1,4 @@
+import { Timestamp } from 'firebase/firestore'
 export const SET_USER = 'SET_USER'
 export const SIGN_OUT = 'SIGN_OUT'
 export const SET_LOADING = 'SET_LOADING'
@@ -6,62 +7,88 @@ export const NEED_VERIFICATION = 'NEED_VERIFICATION'
 export const SET_SUCCESS = 'SET_SUCCESS'
 
 export interface User {
-    firstName: string
-    email: string
-    id: string
-    createdAt: any
-    image: string | null
+	createdAt: Timestamp | string | undefined
+	email: string | null
+	gardens: Array<Gardens>
+	id: string
+	image: string | null
+	name: string | null
+}
+
+export interface Gardens {
+	description: string
+	id: string
+	image: string | null
+	name: string
+	path: string
+	plants: Array<Plants>
+}
+
+export interface Plants {
+	acquisitionDate: unknown
+	alias: string
+	description: string
+	id: string
+	image: string | null
+	location: unknown
+	name: string
+	path: string
+	specieOrType: string
 }
 
 export interface AuthState {
-    user: User | null
-    authenticated: boolean
-    loading: boolean
-    error: string
-    needVerification: boolean
-    success: string
+	authenticated: boolean
+	error: string
+	loading: boolean
+	needVerification: boolean
+	success: string
+	user: User | null
 }
 
 export interface SignUpData {
-    firstName: string
-    email: string
-    password: string
+	email: string
+	name: string
+	password: string
 }
 
 export interface SignInData {
-    email: string
-    password: string
+	email: string
+	password: string
 }
 
 // Actions
 interface SetUserAction {
-    type: typeof SET_USER
-    payload: User
+	payload: User
+	type: typeof SET_USER
 }
 
 interface SetLoadingAction {
-    type: typeof SET_LOADING
-    payload: boolean
+	payload: boolean
+	type: typeof SET_LOADING
 }
 
 interface SignOutAction {
-    type: typeof SIGN_OUT
+	type: typeof SIGN_OUT
 }
 
 interface SetErrorAction {
-    type: typeof SET_ERROR
-    payload: string
+	payload: string
+	type: typeof SET_ERROR
 }
 
 interface NeedVerificationAction {
-    type: typeof NEED_VERIFICATION
+	type: typeof NEED_VERIFICATION
 }
 
 interface SetSuccessAction {
-    type: typeof SET_SUCCESS
-    payload: string
+	payload: string
+	type: typeof SET_SUCCESS
 }
 
-export type AuthAction = SetUserAction | SetLoadingAction |
-SignOutAction | SetErrorAction |
-NeedVerificationAction | SetSuccessAction
+export type AuthAction =
+	| SetUserAction
+	| SetLoadingAction
+	| SignOutAction
+	| SetErrorAction
+	| NeedVerificationAction
+	| SetSuccessAction

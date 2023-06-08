@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { ThunkDispatch } from 'redux-thunk'
 import {
 	createUserWithEmailAndPassword,
@@ -18,13 +17,7 @@ import {
 } from '../types'
 import { RootState } from '../store'
 import { auth, firestore, googleAuthProvider } from '../../Firebase'
-import {
-	collection,
-	doc,
-	getDoc,
-	serverTimestamp,
-	setDoc,
-} from 'firebase/firestore'
+import { Timestamp, collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import { Action } from '@reduxjs/toolkit'
 import { FirebaseError } from 'firebase/app'
 
@@ -39,17 +32,18 @@ export function createUserWithEmail(data: SignUpData) {
 
 			if (response.user) {
 				const userData: User = {
-					createdAt: serverTimestamp(),
+					createdAt: Timestamp.now(),
 					email: data.email,
-					firstName: data.firstName,
+					gardens: [],
 					id: response.user.uid,
 					image: null,
+					name: data.name,
 				}
 
 				const collectionReference = collection(firestore, '/users')
-
 				const documentReference = doc(collectionReference, response.user.uid)
 				await setDoc(documentReference, userData)
+
 				dispatch({ type: SET_USER, payload: userData })
 				dispatch({ type: SET_SUCCESS, payload: true })
 			}
@@ -72,12 +66,17 @@ export function loginWithEmail(data: SignInData) {
 			)
 
 			if (response.user) {
+				const gardensReference = doc(firestore, `/users/${response.user.uid}`)
+				const gardensSnap = await getDoc(gardensReference)
+				const gardens = gardensSnap.get('gardens')
+
 				const userData: User = {
 					createdAt: response.user.metadata.creationTime,
-					email: response.user.email || '',
-					firstName: response.user.displayName || '',
+					email: response.user.email,
+					gardens,
 					id: response.user.uid,
 					image: null,
+					name: response.user.displayName,
 				}
 				dispatch({ type: SET_USER, payload: userData })
 			}
@@ -96,12 +95,17 @@ export function loginWithProvider() {
 			const response = await signInWithPopup(auth, googleAuthProvider)
 
 			if (response.user) {
+				const gardensReference = doc(firestore, `/users/${response.user.uid}`)
+				const gardensSnap = await getDoc(gardensReference)
+				const gardens = gardensSnap.get('gardens') || []
+
 				const userData: User = {
 					createdAt: response.user.metadata.creationTime,
-					email: response.user.email || '',
-					firstName: response.user.displayName || '',
+					email: response.user.email,
+					gardens,
 					id: response.user.uid,
-					image: response.user.photoURL,
+					image: null,
+					name: response.user.displayName,
 				}
 
 				const collectionReference = collection(firestore, '/users')
