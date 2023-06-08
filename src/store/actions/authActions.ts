@@ -175,3 +175,17 @@ export function setError(
 		dispatch({ type: SET_ERROR, payload: message })
 	}
 }
+
+export function sendPasswordResetEmail(
+	email: string
+): ThunkAction<void, RootState, null, AuthAction> {
+	return async (dispatch) => {
+		try {
+			sendPasswordResetEmail(email)
+			console.log('sended')
+		} catch (error: any) {
+			console.log(error)
+			dispatch(setError(error.message))
+		}
+	}
+}

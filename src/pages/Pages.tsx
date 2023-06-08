@@ -8,6 +8,7 @@ import CreateAccount from './Authentication/CreateAccount/CreateAccount'
 import Account from './Account/Account'
 import Settings from './Settings/Settings'
 import Login from './Authentication/Login/Login'
+import ForgotPassword from './Authentication/ForgotPassword/ForgotPassword'
 
 interface Page {
 	element: React.ReactNode
@@ -45,6 +46,11 @@ const Pages: Array<Page> = [
 		element: <CreateAccount />,
 		name: 'create-account',
 		path: '/create-account',
+	},
+	{
+		element: <ForgotPassword />,
+		name: 'forgot-password',
+		path: '/forgot-password',
 	},
 	{
 		element: <Settings />,

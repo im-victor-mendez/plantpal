@@ -2,7 +2,12 @@ import './NavBar.scss'
 import { NavLink, useLocation } from 'react-router-dom'
 import { NavBarPages } from '@pages/Pages'
 
-export const pagesToHide = ['/create-account', '/settings', '/login']
+export const pagesToHide = [
+	'/create-account',
+	'/settings',
+	'/login',
+	'/forgot-password',
+]
 
 /**
  * Nav Bar
