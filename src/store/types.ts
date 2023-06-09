@@ -1,4 +1,6 @@
 import { Timestamp } from 'firebase/firestore'
+
+/* Auth */
 export const SET_USER = 'SET_USER'
 export const SIGN_OUT = 'SIGN_OUT'
 export const SET_LOADING = 'SET_LOADING'
@@ -9,31 +11,9 @@ export const SET_SUCCESS = 'SET_SUCCESS'
 export interface User {
 	createdAt: Timestamp | string | undefined
 	email: string | null
-	gardens: Array<Gardens>
 	id: string
 	image: string | null
 	name: string | null
-}
-
-export interface Gardens {
-	description: string
-	id: string
-	image: string | null
-	name: string
-	path: string
-	plants: Array<Plants>
-}
-
-export interface Plants {
-	acquisitionDate: unknown
-	alias: string
-	description: string
-	id: string
-	image: string | null
-	location: unknown
-	name: string
-	path: string
-	specieOrType: string
 }
 
 export interface AuthState {
@@ -92,3 +72,52 @@ export type AuthAction =
 	| SetErrorAction
 	| NeedVerificationAction
 	| SetSuccessAction
+
+/* Gardens */
+export const SET_GARDEN = 'SET_GARDEN'
+export const DELETE_GARDEN = 'DELETE_GARDEN'
+export const UPDATE_GARDEN = 'UPDATE_GARDEN'
+
+export interface Garden {
+	description: string
+	id: string
+	image: string | null
+	name: string
+	path: string
+	plants: Array<Plants>
+}
+
+export interface Plants {
+	acquisitionDate: unknown
+	alias: string
+	description: string
+	id: string
+	image: string | null
+	location: unknown
+	name: string
+	path: string
+	specieOrType: string
+}
+
+export interface GardenState {
+	gardens: Array<Garden>
+}
+
+// Actions
+interface SetGarden {
+	payload: Garden
+	type: typeof SET_GARDEN
+}
+
+interface DeleteGarden {
+	payload: string
+	type: typeof DELETE_GARDEN
+}
+
+// To implement
+// interface UpdateGarden {
+// 	payload: unknown
+// 	type: typeof UPDATE_GARDEN
+// }
+
+export type GardenAction = SetGarden | DeleteGarden

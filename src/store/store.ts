@@ -1,13 +1,17 @@
+import { useDispatch } from 'react-redux'
+
 import {
-	configureStore,
 	combineReducers,
+	configureStore,
 	getDefaultMiddleware,
 } from '@reduxjs/toolkit'
+
 import authReducer from './reducers/authReducer'
-import { useDispatch } from 'react-redux'
+import gardenReducer from './reducers/gardenReducer'
 
 const reducer = combineReducers({
 	auth: authReducer,
+	gardens: gardenReducer,
 })
 
 const middleware = getDefaultMiddleware({

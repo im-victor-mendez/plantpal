@@ -34,7 +34,6 @@ export function createUserWithEmail(data: SignUpData) {
 				const userData: User = {
 					createdAt: Timestamp.now(),
 					email: data.email,
-					gardens: [],
 					id: response.user.uid,
 					image: null,
 					name: data.name,
@@ -66,14 +65,9 @@ export function loginWithEmail(data: SignInData) {
 			)
 
 			if (response.user) {
-				const gardensReference = doc(firestore, `/users/${response.user.uid}`)
-				const gardensSnap = await getDoc(gardensReference)
-				const gardens = gardensSnap.get('gardens')
-
 				const userData: User = {
 					createdAt: response.user.metadata.creationTime,
 					email: response.user.email,
-					gardens,
 					id: response.user.uid,
 					image: null,
 					name: response.user.displayName,
@@ -95,14 +89,9 @@ export function loginWithProvider() {
 			const response = await signInWithPopup(auth, googleAuthProvider)
 
 			if (response.user) {
-				const gardensReference = doc(firestore, `/users/${response.user.uid}`)
-				const gardensSnap = await getDoc(gardensReference)
-				const gardens = gardensSnap.get('gardens') || []
-
 				const userData: User = {
 					createdAt: response.user.metadata.creationTime,
 					email: response.user.email,
-					gardens,
 					id: response.user.uid,
 					image: response.user.photoURL,
 					name: response.user.displayName,
