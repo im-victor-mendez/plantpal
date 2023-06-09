@@ -1,0 +1,44 @@
+@import '@sass/colors';
+
+$fill: -webkit-fill-available;
+$optimize-contrast: -webkit-optimize-contrast;
+$padding: 8px 10px 9px;
+$gap: 10px;
+$garden-border-radius: 40px 20px;
+$image-border-radius: 20px 40px;
+
+.garden {
+	background-color: $bg-200;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: $gap;
+	width: $fill;
+	min-height: 300px;
+	padding: $padding;
+
+	* {
+		margin: 0;
+	}
+
+	.image,
+	.no-image {
+		border-radius: $image-border-radius;
+		width: $fill;
+		height: 205px;
+	}
+
+	.image {
+		image-rendering: $optimize-contrast;
+		object-fit: cover;
+	}
+
+	.no-image {
+		background-color: $bg-300;
+	}
+
+	.description {
+		min-height: 47px;
+	}
+}
