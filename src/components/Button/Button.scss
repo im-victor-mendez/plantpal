@@ -19,3 +19,52 @@ $border-radius: 40px;
 		color: $primary-200;
 	}
 }
+
+$icon-button-size: 67px;
+$icon-button-small-size: 27px;
+$icon-size: 47px;
+$icon-small-size: 18.94px;
+$cube-radius: 20px;
+$cube-small-radius: 5px;
+
+.button.icon {
+	display: grid;
+	place-items: center;
+
+	width: $icon-button-size;
+	height: $icon-button-size;
+	padding: 0;
+
+	svg {
+		* {
+			stroke: $text;
+		}
+
+		width: $icon-size;
+		height: $icon-size;
+	}
+
+	&:hover {
+		* {
+			stroke: $primary-200;
+		}
+	}
+}
+
+.button.icon.cube {
+	border-radius: $cube-radius;
+}
+
+.button.icon.small.cube {
+	border-radius: $cube-small-radius;
+}
+
+.button.icon.small {
+	width: $icon-button-small-size;
+	height: $icon-button-small-size;
+
+	svg {
+		width: $icon-small-size;
+		height: $icon-small-size;
+	}
+}

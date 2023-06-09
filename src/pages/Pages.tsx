@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import './Pages.scss'
 import { ReactComponent as HomeIcon } from '../assets/svg/home.svg'
 import { ReactComponent as CalendarIcon } from '../assets/svg/calendar.svg'
@@ -9,6 +8,7 @@ import Account from './Account/Account'
 import Settings from './Settings/Settings'
 import Login from './Authentication/Login/Login'
 import ForgotPassword from './Authentication/ForgotPassword/ForgotPassword'
+import Plants from './Plants/Plants'
 
 interface Page {
 	element: React.ReactNode
@@ -28,7 +28,7 @@ const Pages: Array<Page> = [
 		path: '/calendar',
 	},
 	{
-		element: <>To add Plants Page</>,
+		element: <Plants />,
 		name: 'plants',
 		path: '/plants',
 	},

@@ -1,0 +1,10 @@
+#plants {
+	height: calc(100vh - (90px + 20px));
+	overflow: auto;
+
+	.button {
+		position: fixed;
+		bottom: 110px;
+		left: 40px;
+	}
+}
