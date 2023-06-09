@@ -104,7 +104,7 @@ export function loginWithProvider() {
 					email: response.user.email,
 					gardens,
 					id: response.user.uid,
-					image: null,
+					image: response.user.photoURL,
 					name: response.user.displayName,
 				}
 

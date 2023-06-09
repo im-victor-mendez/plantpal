@@ -5,6 +5,7 @@ import { RootState } from '@store/store'
 import { ReactComponent as AccountIcon } from '@assets/svg/user.svg'
 import Button from '@components/Button/Button'
 import { useNavigate } from 'react-router-dom'
+import Loading from '@components/Loading/Loading'
 
 /**
  * Account
@@ -12,9 +13,11 @@ import { useNavigate } from 'react-router-dom'
  * @returns {React.JSX.Element}
  */
 function Account(): React.JSX.Element {
-	const { user } = useSelector((state: RootState) => state.auth)
-	const name = user?.firstName
+	const { user, loading } = useSelector((state: RootState) => state.auth)
+	const name = user?.name
 	const image = user?.image
+
+	if (loading) return <Loading />
 
 	return (
 		<main id="account" className="page">
@@ -37,16 +40,23 @@ interface AccountInfo {
  * @returns {React.JSX.Element}
  */
 function AccountInfo({ image, name }: AccountInfo): React.JSX.Element {
+	const imageToDisplay = image ? (
+		<img
+			id="account-image"
+			src={`${image}`}
+			alt={`${name} account image`}
+			referrerPolicy="no-referrer"
+		/>
+	) : (
+		<div className="no-image" data-testid="no-image">
+			<AccountIcon className="icon" />
+		</div>
+	)
+
 	return (
 		<article id="account-info" data-testid="account-info">
 			<div className="account-top">
-				<img
-					id="account-image"
-					src={`${image}`}
-					alt={`${name} account image`}
-					referrerPolicy="no-referrer"
-				/>
-
+				{imageToDisplay}
 				<h1 id="account-name">{name}</h1>
 			</div>
 		</article>

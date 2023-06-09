@@ -10,6 +10,20 @@ $no-image-size: 200px;
 	// 100% - (nav-bar height + padding)
 	height: calc(100% - (90px + 20px));
 	overflow: auto;
+
+	.no-image {
+		background-color: $bg-300;
+		display: grid;
+		place-items: center;
+		width: $no-image-size;
+		height: $no-image-size;
+		border-radius: 100px;
+
+		.icon {
+			width: 96px;
+			height: 108px;
+		}
+	}
 }
 
 #account > #no-account {
@@ -27,20 +41,6 @@ $no-image-size: 200px;
 
 		* {
 			margin: 0;
-		}
-
-		.no-image {
-			background-color: $bg-300;
-			display: grid;
-			place-items: center;
-			width: $no-image-size;
-			height: $no-image-size;
-			border-radius: 100px;
-
-			.icon {
-				width: 96px;
-				height: 108px;
-			}
 		}
 	}
 

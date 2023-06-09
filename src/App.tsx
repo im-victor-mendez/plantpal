@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from './store/store'
 import { getUserById, setLoading } from './store/actions/authActions'
 import { useLocation } from 'react-router-dom'
+import Loading from '@components/Loading/Loading'
 
 function App() {
 	const dispatch = useAppDispatch()
@@ -28,7 +29,7 @@ function App() {
 		}
 	}, [dispatch])
 
-	if (loading) return <>Loading</>
+	if (loading) return <Loading />
 
 	return (
 		<>

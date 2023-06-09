@@ -10,7 +10,9 @@ import {
 import PlantPal, { Types as PlantPalTypes } from '@components/PlantPal/PlantPal'
 import { ReactComponent as GoogleIcon } from '@assets/svg/google.svg'
 import { NavLink } from 'react-router-dom'
-import { useAppDispatch } from '@store/store'
+import { RootState, useAppDispatch } from '@store/store'
+import { useSelector } from 'react-redux'
+import Loading from '@components/Loading/Loading'
 
 /**
  * Create Account
@@ -23,6 +25,7 @@ function CreateAccount(): React.JSX.Element {
 	const [password, setPassword] = useState<string>('')
 
 	const dispatch = useAppDispatch()
+	const { loading } = useSelector((state: RootState) => state.auth)
 
 	function createAccount() {
 		dispatch(createUserWithEmail({ email, name, password }))
@@ -31,6 +34,8 @@ function CreateAccount(): React.JSX.Element {
 	function alternativeMethod() {
 		dispatch(loginWithProvider())
 	}
+
+	if (loading) <Loading />
 
 	return (
 		<main id="create-account" className="page">

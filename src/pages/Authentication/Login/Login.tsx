@@ -2,6 +2,7 @@ import './Login.scss'
 import { ReactComponent as GoogleIcon } from '@assets/svg/google.svg'
 import Button from '@components/Button/Button'
 import Input from '@components/Input/Input'
+import Loading from '@components/Loading/Loading'
 import PlantPal from '@components/PlantPal/PlantPal'
 import { loginWithEmail, loginWithProvider } from '@store/actions/authActions'
 import { RootState, useAppDispatch } from '@store/store'
@@ -18,7 +19,7 @@ function Login(): React.JSX.Element {
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
 
-	const { error } = useSelector((state: RootState) => state.auth)
+	const { error, loading } = useSelector((state: RootState) => state.auth)
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
@@ -37,6 +38,8 @@ function Login(): React.JSX.Element {
 	function loginWithGoogle() {
 		dispatch(loginWithProvider())
 	}
+
+	if (loading) return <Loading />
 
 	return (
 		<main className="page" id="login">
