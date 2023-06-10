@@ -1,0 +1,42 @@
+@import '@sass/colors';
+@import '@sass/mixins';
+
+$padding: 20px;
+$border-radius: 40px;
+$gap: 20px;
+
+.create-garden-container {
+	background-color: $bg-300;
+	display: grid;
+	place-items: center;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	@include icon-medium();
+
+	.close-icon {
+		padding: $padding;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.create-garden {
+		background-color: $background;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-radius: $border-radius;
+		padding: $padding;
+		height: 400px;
+
+		.inputs {
+			display: flex;
+			flex-direction: column;
+			gap: $gap;
+		}
+	}
+}
