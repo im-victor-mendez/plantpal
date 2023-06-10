@@ -5,6 +5,8 @@ import { RootState } from '@store/store'
 import { Garden as GardenType } from '@store/types'
 import { useSelector } from 'react-redux'
 import { ReactComponent as AddIcon } from '@assets/svg/add-plus.svg'
+import CreateGarden from '@layouts/Garden/CreateGarden/CreateGarden'
+import { useState } from 'react'
 
 /**
  * Plants
@@ -12,7 +14,14 @@ import { ReactComponent as AddIcon } from '@assets/svg/add-plus.svg'
  * @returns {React.JSX.Element}
  */
 function Plants(): React.JSX.Element {
+	const [createGarden, setCreateGarden] = useState(false)
 	const { gardens } = useSelector((state: RootState) => state.gardens)
+
+	function displayGarden() {
+		setCreateGarden(true)
+	}
+
+	if (createGarden) return <CreateGarden setDisplay={setCreateGarden} />
 
 	return (
 		<main id="plants" className="page">
@@ -27,9 +36,7 @@ function Plants(): React.JSX.Element {
 			))}
 			<ButtonIcon
 				icon={<AddIcon />}
-				functionality={function (): void {
-					throw new Error('Function not implemented.')
-				}}
+				functionality={displayGarden}
 				type={ButtonIconTypes.CUBE}
 			/>
 		</main>

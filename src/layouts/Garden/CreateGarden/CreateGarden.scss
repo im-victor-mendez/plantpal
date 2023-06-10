@@ -38,5 +38,11 @@ $gap: 20px;
 			flex-direction: column;
 			gap: $gap;
 		}
+
+		.button {
+			position: initial;
+			padding: 0;
+			width: -webkit-fill-available;
+		}
 	}
 }
