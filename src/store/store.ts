@@ -7,11 +7,9 @@ import {
 } from '@reduxjs/toolkit'
 
 import authReducer from './reducers/authReducer'
-import gardenReducer from './reducers/gardenReducer'
 
 const reducer = combineReducers({
 	auth: authReducer,
-	gardens: gardenReducer,
 })
 
 const middleware = getDefaultMiddleware({

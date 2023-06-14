@@ -6,6 +6,7 @@ import {
 	signOut,
 } from 'firebase/auth'
 import {
+	Garden,
 	SET_ERROR,
 	SET_LOADING,
 	SET_SUCCESS,
@@ -34,6 +35,7 @@ export function createUserWithEmail(data: SignUpData) {
 				const userData: User = {
 					createdAt: Timestamp.now(),
 					email: data.email,
+					gardens: [],
 					id: response.user.uid,
 					image: null,
 					name: data.name,
@@ -65,9 +67,18 @@ export function loginWithEmail(data: SignInData) {
 			)
 
 			if (response.user) {
+				const usersDocRef = doc(firestore, 'users', response.user.uid)
+				const userDocSnap = await getDoc(usersDocRef)
+				let gardens: Array<Garden> = []
+
+				if (userDocSnap.exists()) {
+					gardens = userDocSnap.get('gardens')
+				}
+
 				const userData: User = {
 					createdAt: response.user.metadata.creationTime,
 					email: response.user.email,
+					gardens,
 					id: response.user.uid,
 					image: null,
 					name: response.user.displayName,
@@ -89,9 +100,18 @@ export function loginWithProvider() {
 			const response = await signInWithPopup(auth, googleAuthProvider)
 
 			if (response.user) {
+				const usersDocRef = doc(firestore, 'users', response.user.uid)
+				const userDocSnap = await getDoc(usersDocRef)
+				let gardens: Array<Garden> = []
+
+				if (userDocSnap.exists()) {
+					gardens = userDocSnap.get('gardens')
+				}
+
 				const userData: User = {
 					createdAt: response.user.metadata.creationTime,
 					email: response.user.email,
+					gardens,
 					id: response.user.uid,
 					image: response.user.photoURL,
 					name: response.user.displayName,
