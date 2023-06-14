@@ -11,6 +11,7 @@ export const SET_SUCCESS = 'SET_SUCCESS'
 export interface User {
 	createdAt: Timestamp | string | undefined
 	email: string | null
+	gardens: Array<Garden>
 	id: string
 	image: string | null
 	name: string | null

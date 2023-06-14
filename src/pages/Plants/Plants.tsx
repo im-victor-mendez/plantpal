@@ -15,7 +15,7 @@ import { useState } from 'react'
  */
 function Plants(): React.JSX.Element {
 	const [createGarden, setCreateGarden] = useState(false)
-	const { gardens } = useSelector((state: RootState) => state.gardens)
+	const { user } = useSelector((state: RootState) => state.auth)
 
 	function displayGarden() {
 		setCreateGarden(true)
@@ -25,7 +25,7 @@ function Plants(): React.JSX.Element {
 
 	return (
 		<main id="plants" className="page">
-			{gardens.map((garden: GardenType) => (
+			{user?.gardens.map((garden: GardenType) => (
 				<Garden
 					key={`${garden.name}-key`}
 					description={garden.description}
