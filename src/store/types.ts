@@ -88,6 +88,12 @@ export interface Garden {
 	plants: Array<Plants>
 }
 
+export interface CreateGardenData {
+	name: string
+	description: string | null
+	image: unknown | null
+}
+
 export interface Plants {
 	acquisitionDate: unknown
 	alias: string
@@ -99,26 +105,3 @@ export interface Plants {
 	path: string
 	specieOrType: string
 }
-
-export interface GardenState {
-	gardens: Array<Garden>
-}
-
-// Actions
-interface SetGarden {
-	payload: Garden
-	type: typeof SET_GARDEN
-}
-
-interface DeleteGarden {
-	payload: string
-	type: typeof DELETE_GARDEN
-}
-
-// To implement
-// interface UpdateGarden {
-// 	payload: unknown
-// 	type: typeof UPDATE_GARDEN
-// }
-
-export type GardenAction = SetGarden | DeleteGarden

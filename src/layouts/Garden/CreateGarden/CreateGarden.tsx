@@ -3,6 +3,9 @@ import Input from '@components/Input/Input'
 import './CreateGarden.scss'
 import { Dispatch, SetStateAction, useState } from 'react'
 import Button from '@components/Button/Button'
+import { RootState, useAppDispatch } from '@store/store'
+import { createGarden } from '@store/actions/gardenActions'
+import { useSelector } from 'react-redux'
 
 interface CreateGardenProps {
 	setDisplay: Dispatch<SetStateAction<boolean>>
@@ -18,8 +21,26 @@ function CreateGarden({ setDisplay }: CreateGardenProps) {
 	const [name, setName] = useState<string>('')
 	const [description, setDescription] = useState<string>('')
 
+	const { user } = useSelector((state: RootState) => state.auth)
+	const dispatch = useAppDispatch()
+
 	function closeLayout() {
 		setDisplay(false)
+	}
+
+	function createGardenButton() {
+		if (user)
+			dispatch(
+				createGarden(
+					{
+						description,
+						// TO FIX
+						image: null,
+						name,
+					},
+					user.id
+				)
+			)
 	}
 
 	return (
@@ -37,9 +58,7 @@ function CreateGarden({ setDisplay }: CreateGardenProps) {
 				<Button
 					display={'Create Garden :D'}
 					data-testid="create-garden-button"
-					functionality={function (): void {
-						throw new Error('Function not implemented.')
-					}}
+					functionality={createGardenButton}
 				/>
 			</section>
 		</main>
