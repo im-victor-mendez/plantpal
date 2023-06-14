@@ -10,7 +10,9 @@ import {
 import { ThunkDispatch } from 'redux-thunk'
 import { setError } from './authActions'
 import { firestore } from '@Firebase/index'
-import { CreateGardenData } from '@store/types'
+import { CreateGardenData, Garden } from '@store/types'
+import { v4 as uuid } from 'uuid'
+import { slugify } from '@functions/string'
 
 export function createGarden(data: CreateGardenData, userId: string) {
 	return async (dispatch: ThunkDispatch<RootState, void, Action>) => {
@@ -19,8 +21,17 @@ export function createGarden(data: CreateGardenData, userId: string) {
 			const userDocSnap = await getDoc(userDocRef)
 
 			if (userDocSnap.exists()) {
+				const gardenData: Garden = {
+					description: data.description,
+					id: uuid(),
+					image: data.image,
+					name: data.name,
+					path: slugify(data.name),
+					plants: [],
+				}
+
 				updateDoc(userDocRef, {
-					gardens: arrayUnion(data),
+					gardens: arrayUnion(gardenData),
 				}).then(() => {
 					window.location.reload()
 				})

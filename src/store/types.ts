@@ -80,9 +80,9 @@ export const DELETE_GARDEN = 'DELETE_GARDEN'
 export const UPDATE_GARDEN = 'UPDATE_GARDEN'
 
 export interface Garden {
-	description: string
+	description: string | null
 	id: string
-	image: string | null
+	image: unknown | string | null
 	name: string
 	path: string
 	plants: Array<Plants>

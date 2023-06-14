@@ -27,7 +27,7 @@ function Plants(): React.JSX.Element {
 		<main id="plants" className="page">
 			{user?.gardens.map((garden: GardenType) => (
 				<Garden
-					key={`${garden.name}-key`}
+					key={`${garden.id}`}
 					description={garden.description}
 					image={garden.image}
 					name={garden.name}

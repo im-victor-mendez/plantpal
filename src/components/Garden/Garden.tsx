@@ -3,7 +3,7 @@ import './Garden.scss'
 
 interface GardenProps {
 	description: string | null
-	image: string | null
+	image: unknown | string | null
 	name: string
 	path: string
 }
